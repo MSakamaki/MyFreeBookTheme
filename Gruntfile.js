@@ -7,6 +7,12 @@ module.exports = function(grunt){
           directory: 'tmp/fontawesome'
         },
       },
+      mermaid: {
+        options: {
+          repository: 'https://github.com/knsv/mermaid.git',
+          directory: 'tmp/mermaid'
+        },
+      },
       fancybox: {
         options: {
           repository: 'https://github.com/fancyapps/fancyBox.git',
@@ -20,6 +26,12 @@ module.exports = function(grunt){
         cwd: 'tmp/fontawesome/fonts/',
         src: ['**'],
         dest: 'source/css/fonts/'
+      },
+      mermaid: {
+        expand: true,
+        cwd: 'tmp/mermaid/dist/',
+        src: ['mermaid.full.min.js'],
+        dest: 'source/mermaid/'
       },
       fancybox: {
         expand: true,
@@ -41,6 +53,7 @@ module.exports = function(grunt){
 
   grunt.registerTask('fontawesome', ['gitclone:fontawesome', 'copy:fontawesome', '_clean:tmp']);
   grunt.registerTask('fancybox', ['gitclone:fancybox', 'copy:fancybox', '_clean:tmp']);
+  grunt.registerTask('mermaid', ['gitclone:mermaid', 'copy:mermaid', '_clean:tmp']);
   grunt.registerTask('default', ['gitclone', 'copy', '_clean:tmp']);
   grunt.registerTask('clean', ['_clean']);
 };
